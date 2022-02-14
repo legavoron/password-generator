@@ -73,15 +73,21 @@ html, body{
     align-items: center;
     justify-content: center;
     font-size: 5vh;
-    padding: 2vw;
+    padding: 7px;
+}
+.password_value{
+    width: 100%;
+    font-size: 5vh;
+    word-wrap: break-word;
+    text-align: center;
 }
 @media(max-width: 800px) {
-    .password_block{
+    .password_value{
         font-size: 3vh;
     }
 }
 @media(max-width: 300px) {
-    .password_block{
+    .password_value{
         font-size: 2vh;
     }
 }
@@ -281,9 +287,20 @@ input[type="range"]::-webkit-slider-thumb:active {
     top: 5px;
     cursor: pointer;
 }
-.select{
+.selects_container{
     position: absolute;
     z-index: 2;
+    right: 10px;
+    top: 25px;
+    width: 15px;
+    height: 25px;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.select{
+    /* position: absolute; */
+    z-index: 3;
     right: 10px;
     top: 25px;
     width: 15px;
@@ -291,6 +308,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     background-color: rgb(255, 255, 255);
     cursor: pointer;
     border-radius: 2px;
+    margin: 5px 0px;
 }
 
 /* -------------------------------------------- Mobile horizontal --------------------- */

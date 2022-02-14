@@ -27,12 +27,15 @@ createHeading()
 function createPasswordBlock() {
     let passwordBlock = document.createElement('div');
     passwordBlock.classList.add('password_block');
-    passwordBlock.innerHTML = 'Ваш пароль';
     containerBlock.append(passwordBlock);
+    let passwordValue = document.createElement('h2');
+    passwordValue.classList.add('password_value');
+    passwordValue.innerHTML= 'Ваш пароль';
+    passwordBlock.append(passwordValue);
 }
 createPasswordBlock();
 
-function createMenuContainer(idCheckbox, textMenu, hiddenText) {
+function createMenuContainer(idCheckbox, textMenu, hiddenText, idBox) {
     let menuContainer = document.createElement('div');
     menuContainer.classList.add('menu_container');
     let labelForCheckbox = document.createElement('label');
@@ -49,6 +52,7 @@ function createMenuContainer(idCheckbox, textMenu, hiddenText) {
     let textMenuBlock = document.createElement('p');
     textMenuBlock.classList.add('menu_p');
     textMenuBlock.classList.add('text_menu_block');
+    textMenuBlock.id = idBox;
     textMenuBlock.innerHTML = textMenu;
     menuContainer.append(textMenuBlock);
     let tooltipBlock = document.createElement('div');
@@ -65,11 +69,11 @@ function createMenuContainer(idCheckbox, textMenu, hiddenText) {
     containerBlock.append(menuContainer)
 }
 
-createMenuContainer('checkboxLangeCir','Кириллица', 'а, б, в, г, д, е, ё, ж ...');
-createMenuContainer('checkboxLangeLat','Латинские буквы', 'a, b, c, d, e, f, g, h ...');
-createMenuContainer('checkboxLetters','Включать прописные буквы', 'А, Б, В, Г, Д, Е, Ё, Ж ...');
-createMenuContainer('checkboxSymbols','Включать символы', '! @ $ % ^ & * ( ) _ - + . , /');
-createMenuContainer('checkboxNumbers', 'Включать цифры', '1, 2, 3, 4, 5, 6, 7, 8 ...');
+createMenuContainer('checkboxLangeCir','Кириллица', 'а, б, в, г, д, е, ё, ж ...', 'cirillBox');
+createMenuContainer('checkboxLangeLat','Латинские буквы', 'a, b, c, d, e, f, g, h ...', 'latBox');
+createMenuContainer('checkboxLetters','Включать прописные буквы', 'А, Б, В, Г, Д, Е, Ё, Ж ...', 'highLettersBox');
+createMenuContainer('checkboxSymbols','Включать символы', '! @ $ % ^ & * ( ) _ - + . , /', 'symbolBox');
+createMenuContainer('checkboxNumbers', 'Включать цифры', '1, 2, 3, 4, 5, 6, 7, 8 ...', 'numbersBox');
 
 function createRange() {
     let rangeContainer = document.createElement('div');
@@ -129,13 +133,17 @@ function createLangeChoose() {
 createLangeChoose();
 
 function createSelect() {
+    let selectsContainer = document.createElement('div');
+    selectsContainer.classList.add('selects_container');
+    wrapper.append(selectsContainer);
     let select = document.createElement('div');
     select.classList.add('select');
     select.id = 'selectBlock1';
-    wrapper.append(select);
+    selectsContainer.append(select);
 }
 createSelect();
 
+let selectsContainer = document.querySelector('.selects_container');
 function creareSelectBlock(idSelectBlock, color, positionY) {
     let selectBlock = document.createElement('div');
     selectBlock.classList.add('select');
@@ -143,7 +151,7 @@ function creareSelectBlock(idSelectBlock, color, positionY) {
     selectBlock.style.backgroundColor = color;
     selectBlock.style.top = positionY;
     selectBlock.id = idSelectBlock;
-    wrapper.append(selectBlock);
+    selectsContainer.append(selectBlock);
 }
 creareSelectBlock('selectBlock2', '#013E59', '45px');
 creareSelectBlock('selectBlock3', '#02705C', '65px');

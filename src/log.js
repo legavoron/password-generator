@@ -1,5 +1,5 @@
 let blockForPassword = document.querySelector('.password_block');
-
+let passwordValue = document.querySelector('.password_value');
 let checkboxCirLetters = document.querySelector('#checkboxLangeCir');
 let checkboxLatLetters = document.querySelector('#checkboxLangeLat');
 let checkboxHighLetters = document.querySelector('#checkboxLetters');
@@ -15,11 +15,21 @@ let bntGeneration = document.querySelector('#btnGen');
 let bntcopyPassword = document.querySelector('#btnCopy');
 
 let chooseLange = document.querySelector('.lang_choose_block');
+let containerSelects = document.querySelector('.selects_container');
 let selectBlock1 = document.querySelector('#selectBlock1');
 let selectBlock2 = document.querySelector('#selectBlock2');
 let selectBlock3 = document.querySelector('#selectBlock3');
 let selectBlock4 = document.querySelector('#selectBlock4');
 
+let cirillBox = document.querySelector('#cirillBox');
+let latBox = document.querySelector('#latBox');
+let highLettersBox = document.querySelector('#highLettersBox');
+let symbolBox = document.querySelector('#symbolBox');
+let numbersBox = document.querySelector('#numbersBox');
+let heading  = document.querySelector('.heading');
+let rangeText = document.querySelector('.range_text');
+
+// ------------------------------------------------------------------------------------------------------------------
 
 bntGeneration.addEventListener('click', generatingPassword);
 
@@ -28,11 +38,30 @@ function generatingPassword() {
     let resultPasswordArray = [];
     let rangeNUm = +valueRange.innerHTML;
 
+    let cirillLetters = [];
+    let latLetters = [];
+    let highLettersCirill = [];
+    let highLettersLat = [];
     
-    let cirillLetters = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', "р", 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'];
-    let latLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    let highLettersCirill = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'];
-    let highLettersLat = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    if (chooseLange.innerHTML === 'en') {
+        cirillLetters = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', "р", 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'];
+
+        latLetters = ['b', 'd', 'f', 'g', 'h', 'i', 'j', 'l', 'm', 'n', 'q', 'r', 's', 't',  'v', 'w', 'z'];
+
+        highLettersCirill = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'];
+
+        highLettersLat = ['D','F', 'G','I', 'J', 'L', 'N', 'Q', 'R', 'S', 'U', 'V', 'W', 'Z'];
+
+    } else {
+        cirillLetters = ['б', 'в', 'г', 'д', 'ё', 'ж', 'з', 'и', 'й', 'л', 'п', 'ф', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'];
+
+        latLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',  'v', 'w', 'x', 'y', 'z'];
+
+        highLettersCirill = ['Б', 'Г', 'Д', 'Ё', 'Ж', 'З', 'И', 'Й', 'Л', 'П', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'];
+
+        highLettersLat = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    }   
+    
     let symbols = ['!', '@', '#', '%', '^', '&', '*', '(', ')', '~', '|', '-', '+'];
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -62,10 +91,10 @@ function generatingPassword() {
         resultPasswordArray.push(passwordArray[randomNumber]);
     }
 
-    blockForPassword.innerHTML = resultPasswordArray.join('');
+    passwordValue.innerHTML = resultPasswordArray.join('');
 }
 
-// ----------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------
 function changeRangeValue() {
     rangeInput.addEventListener('change', () => {
         valueRange.innerHTML = rangeInput.value;
@@ -73,7 +102,7 @@ function changeRangeValue() {
 }
 changeRangeValue()
 
-// --------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------
 function showHints() {
     hintCircle.forEach((hint, i) => {
         hint.addEventListener('mouseover', () => {
@@ -93,7 +122,68 @@ function hideHints() {
 });
 }
 hideHints();
-// ------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------
+
+function changeLang() {
+    chooseLange.addEventListener('click', () => {
+        
+        if(chooseLange.innerHTML === 'en') {
+            heading.innerHTML = 'PASSWORD GENERATOR';
+            passwordValue.innerHTML = 'Your password';
+            cirillBox.innerHTML = 'Cyrillic alphabet';
+            latBox.innerHTML = 'Latin alphabet';
+            highLettersBox.innerHTML = 'Add uppercase letters';
+            symbolBox.innerHTML = 'Add Characters';
+            numbersBox.innerHTML = 'Add numbers';
+            rangeText.innerHTML = 'Length:';
+            bntGeneration.innerHTML = 'Generate';
+            bntcopyPassword.innerHTML = 'Copy';
+            chooseLange.innerHTML = 'ru';
+            checkboxCirLetters.checked = false;
+            checkboxLatLetters.checked = true;
+
+        } else {    
+            heading.innerHTML = 'ГЕНЕРАТОР ПАРОЛЕЙ';
+            passwordValue.innerHTML = 'Ваш пароль';
+            cirillBox.innerHTML = 'Кириллица';
+            latBox.innerHTML = 'Латинские буквы';
+            highLettersBox.innerHTML = 'Включать прописные буквы';
+            symbolBox.innerHTML = 'Включать символы';
+            numbersBox.innerHTML = 'Включать цифры';
+            rangeText.innerHTML = 'Длина:';
+            bntGeneration.innerHTML = 'Сгенерировать';
+            bntcopyPassword.innerHTML = 'Скопировать';
+            chooseLange.innerHTML = 'en';
+            checkboxLatLetters.checked = false;
+            checkboxCirLetters.checked = true;
+        }
+
+        console.log('Hello');
+    })
+}
+changeLang();
+// ------------------------------------------------------------------------------------------------------------------
+function showHiddenColorBox() {
+    containerSelects.addEventListener('mouseover', () => {
+        containerSelects.style.height = '86px';
+        selectBlock2.style.display = 'block';
+        selectBlock3.style.display = 'block';
+        selectBlock4.style.display = 'block';
+    });
+}
+showHiddenColorBox();
+
+function HideHiddenColorBox() {
+    containerSelects.addEventListener('mouseout', () => {
+        containerSelects.style.height = '25px';
+        selectBlock2.style.display = 'none';
+        selectBlock3.style.display = 'none';
+        selectBlock4.style.display = 'none';
+    });
+}
+HideHiddenColorBox();
+
+// ------------------------------------------------------------------------------------------------------------------
 function getRandomNumber(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
