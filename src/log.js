@@ -29,6 +29,31 @@ let numbersBox = document.querySelector('#numbersBox');
 let heading  = document.querySelector('.heading');
 let rangeText = document.querySelector('.range_text');
 
+let fonCircle = document.querySelector('.circle_fon');
+let menuContainers = document.querySelectorAll('.menu_container');
+let hiddenCircleBlocks = document.querySelectorAll('.tooltip_circle');
+let menuContainerText = document.querySelectorAll('.menu_p');
+
+// ------------------------------------------------------------------------------------------------------------------
+function checkLocalStorage() {
+    let colorFone = localStorage.getItem('color');
+
+    if (colorFone === 'black') {
+        editColor(selectBlock1, '#0D0D0D', '#2E5159', '#2E5159', 'black');
+    }
+    if (colorFone === 'blue') {
+        editColor(selectBlock2, "#013E59", '#01728E', '#BF7F62', 'blue');
+    }
+    if (colorFone === 'green') {
+        editColor(selectBlock3, "#02705C", '#89A895', '#A0B8C4', 'green');
+    }
+    if (colorFone === 'red') {
+        editColor(selectBlock4, "#5E2128", '#280A0C', '#C83C5A', 'red');
+    }
+
+    editLanguage();
+}
+checkLocalStorage();
 // ------------------------------------------------------------------------------------------------------------------
 
 bntGeneration.addEventListener('click', generatingPassword);
@@ -125,43 +150,42 @@ hideHints();
 // ------------------------------------------------------------------------------------------------------------------
 
 function changeLang() {
-    chooseLange.addEventListener('click', () => {
-        
-        if(chooseLange.innerHTML === 'en') {
-            heading.innerHTML = 'PASSWORD GENERATOR';
-            passwordValue.innerHTML = 'Your password';
-            cirillBox.innerHTML = 'Cyrillic alphabet';
-            latBox.innerHTML = 'Latin alphabet';
-            highLettersBox.innerHTML = 'Add uppercase letters';
-            symbolBox.innerHTML = 'Add Characters';
-            numbersBox.innerHTML = 'Add numbers';
-            rangeText.innerHTML = 'Length:';
-            bntGeneration.innerHTML = 'Generate';
-            bntcopyPassword.innerHTML = 'Copy';
-            chooseLange.innerHTML = 'ru';
-            checkboxCirLetters.checked = false;
-            checkboxLatLetters.checked = true;
-
-        } else {    
-            heading.innerHTML = 'ГЕНЕРАТОР ПАРОЛЕЙ';
-            passwordValue.innerHTML = 'Ваш пароль';
-            cirillBox.innerHTML = 'Кириллица';
-            latBox.innerHTML = 'Латинские буквы';
-            highLettersBox.innerHTML = 'Включать прописные буквы';
-            symbolBox.innerHTML = 'Включать символы';
-            numbersBox.innerHTML = 'Включать цифры';
-            rangeText.innerHTML = 'Длина:';
-            bntGeneration.innerHTML = 'Сгенерировать';
-            bntcopyPassword.innerHTML = 'Скопировать';
-            chooseLange.innerHTML = 'en';
-            checkboxLatLetters.checked = false;
-            checkboxCirLetters.checked = true;
-        }
-
-        console.log('Hello');
-    })
+    chooseLange.addEventListener('click', editLanguage);
 }
 changeLang();
+
+function editLanguage() {
+    if(chooseLange.innerHTML === 'en') {
+        heading.innerHTML = 'PASSWORD GENERATOR';
+        passwordValue.innerHTML = 'Your password';
+        cirillBox.innerHTML = 'Cyrillic alphabet';
+        latBox.innerHTML = 'Latin alphabet';
+        highLettersBox.innerHTML = 'Add uppercase letters';
+        symbolBox.innerHTML = 'Add Characters';
+        numbersBox.innerHTML = 'Add numbers';
+        rangeText.innerHTML = 'Length:';
+        bntGeneration.innerHTML = 'Generate';
+        bntcopyPassword.innerHTML = 'Copy';
+        chooseLange.innerHTML = 'ru';
+        checkboxCirLetters.checked = false;
+        checkboxLatLetters.checked = true;
+
+    } else {    
+        heading.innerHTML = 'ГЕНЕРАТОР ПАРОЛЕЙ';
+        passwordValue.innerHTML = 'Ваш пароль';
+        cirillBox.innerHTML = 'Кириллица';
+        latBox.innerHTML = 'Латинские буквы';
+        highLettersBox.innerHTML = 'Включать прописные буквы';
+        symbolBox.innerHTML = 'Включать символы';
+        numbersBox.innerHTML = 'Включать цифры';
+        rangeText.innerHTML = 'Длина:';
+        bntGeneration.innerHTML = 'Сгенерировать';
+        bntcopyPassword.innerHTML = 'Скопировать';
+        chooseLange.innerHTML = 'en';
+        checkboxLatLetters.checked = false;
+        checkboxCirLetters.checked = true;
+    }
+}
 // ------------------------------------------------------------------------------------------------------------------
 function showHiddenColorBox() {
     containerSelects.addEventListener('mouseover', () => {
@@ -182,6 +206,36 @@ function HideHiddenColorBox() {
     });
 }
 HideHiddenColorBox();
+
+// ------------------------------------------------------------------------------------------------------------------
+
+function cangeColor(select, fonColor, btnsColor, elementsColor, idColor) {
+        
+    select.addEventListener('click', () => {
+        editColor(select, fonColor, btnsColor, elementsColor, idColor);
+    })
+}
+function editColor(select, fonColor, btnsColor, elementsColor, idColor) {
+    fonCircle.style.backgroundColor = fonColor;
+    containerSelects.style.backgroundColor = fonColor;
+    bntGeneration.style.backgroundColor = btnsColor;
+    bntcopyPassword.style.backgroundColor = btnsColor;
+
+    menuContainers.forEach(elem => {
+        elem.style.borderColor = elementsColor;
+    });
+
+    hiddenCircleBlocks.forEach(elem => {
+        elem.style.backgroundColor = elementsColor;
+    });
+
+    localStorage.setItem('color', idColor);
+}
+cangeColor(selectBlock1, '#0D0D0D', '#2E5159', '#2E5159', 'black');
+cangeColor(selectBlock2, "#013E59", '#01728E', '#BF7F62', 'blue');
+cangeColor(selectBlock3, "#02705C", '#89A895', '#A0B8C4', 'green');
+cangeColor(selectBlock4, "#5E2128", '#280A0C', '#C83C5A', 'red');
+
 
 // ------------------------------------------------------------------------------------------------------------------
 function getRandomNumber(min, max) {

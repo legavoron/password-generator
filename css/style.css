@@ -286,6 +286,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     right: 10px;
     top: 5px;
     cursor: pointer;
+    border-radius: 2px;
 }
 .selects_container{
     position: absolute;
@@ -297,6 +298,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     background-color: black;
     cursor: pointer;
     border-radius: 2px;
+    
 }
 .select{
     /* position: absolute; */
@@ -307,6 +309,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     height: 15px;
     background-color: rgb(255, 255, 255);
     cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 2px;
     margin: 5px 0px;
 }
