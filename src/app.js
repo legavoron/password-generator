@@ -27,7 +27,7 @@ createHeading()
 function createPasswordBlock() {
     let passwordBlock = document.createElement('div');
     passwordBlock.classList.add('password_block');
-    passwordBlock.innerHTML = 'Ваш пароль 1231212321212365412';
+    passwordBlock.innerHTML = 'Ваш пароль';
     containerBlock.append(passwordBlock);
 }
 createPasswordBlock();
@@ -85,15 +85,16 @@ function createRange() {
     let rangeValue = document.createElement('p');
     rangeValue.classList.add('menu_p');
     rangeValue.classList.add('range_value');
-    rangeValue.innerHTML = '00';
+    rangeValue.innerHTML = '1';
     rangeContainer.append(rangeValue);
 
     let range = document.createElement('input');
     range.type = 'range';
-    range.min = 0;
+    range.min = 1;
     range.max = 30;
     range.step = 1;
     range.value = 0;
+    range.id = 'RangeInput';
     rangeContainer.append(range);
     
 }   
@@ -130,6 +131,7 @@ createLangeChoose();
 function createSelect() {
     let select = document.createElement('div');
     select.classList.add('select');
+    select.id = 'selectBlock1';
     wrapper.append(select);
 }
 createSelect();
@@ -143,9 +145,9 @@ function creareSelectBlock(idSelectBlock, color, positionY) {
     selectBlock.id = idSelectBlock;
     wrapper.append(selectBlock);
 }
-creareSelectBlock('selectBlock1', '#013E59', '45px');
-creareSelectBlock('selectBlock2', '#02705C', '65px');
-creareSelectBlock('selectBlock3', '#C83C5A', '85px');
+creareSelectBlock('selectBlock2', '#013E59', '45px');
+creareSelectBlock('selectBlock3', '#02705C', '65px');
+creareSelectBlock('selectBlock4', '#C83C5A', '85px');
 
 
 
