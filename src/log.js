@@ -236,10 +236,19 @@ cangeColor(selectBlock2, "#013E59", '#01728E', '#BF7F62', 'blue');
 cangeColor(selectBlock3, "#02705C", '#89A895', '#A0B8C4', 'green');
 cangeColor(selectBlock4, "#5E2128", '#280A0C', '#C83C5A', 'red');
 
-
 // ------------------------------------------------------------------------------------------------------------------
 function getRandomNumber(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; 
   }
+
+// ------------------------------------------------------------------------------------------------------------------
+function copyPassword() {
+    bntcopyPassword.addEventListener('click', () => {
+        bntcopyPassword.addEventListener('click', ()=> {
+            navigator.clipboard.writeText(passwordValue.innerHTML);
+        })
+    });
+}
+copyPassword();

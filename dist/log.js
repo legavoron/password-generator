@@ -242,3 +242,13 @@ function getRandomNumber(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+// ------------------------------------------------------------------------------------------------------------------
+function copyPassword() {
+    bntcopyPassword.addEventListener('click', function () {
+        bntcopyPassword.addEventListener('click', function () {
+            navigator.clipboard.writeText(passwordValue.innerHTML);
+        });
+    });
+}
+copyPassword();
